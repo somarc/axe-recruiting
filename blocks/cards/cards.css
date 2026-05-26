@@ -1,27 +1,120 @@
+/* ============================================================
+   CARDS — dark surface, hover gradient crown
+   ============================================================ */
+
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  position: relative;
+  overflow: hidden;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+/* Gradient top-border crown revealed on hover */
+.cards > ul > li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-amber), var(--color-cyan));
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
+.cards > ul > li:hover {
+  border-color: var(--color-border);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 40%);
+}
+
+.cards > ul > li:hover::before {
+  opacity: 1;
+}
+
+/* Hide image area if no image */
 .cards .cards-card-image {
-  line-height: 0;
+  display: none;
 }
 
 .cards > ul > li img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: block;
+  filter: invert(1) opacity(0.6);
+}
+
+/* When there IS an image show it full-width */
+.cards .cards-card-image:not(:empty) {
+  display: block;
+  line-height: 0;
+}
+
+.cards .cards-card-image:not(:empty) img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  filter: none;
+  margin: 0;
+}
+
+.cards .cards-card-body {
+  padding: 24px;
+}
+
+.cards .cards-card-body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-heading);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.cards .cards-card-body p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.cards .cards-card-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* In-card links get amber arrow treatment */
+.cards .cards-card-body a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-amber);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.15s;
+  text-decoration: none;
+}
+
+.cards .cards-card-body a::after {
+  content: '→';
+  transition: transform 0.15s;
+}
+
+.cards .cards-card-body a:hover {
+  text-decoration: none;
+  gap: 8px;
 }
