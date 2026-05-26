@@ -1,0 +1,17 @@
+name: agent-validate
+steps:
+  - id: agent-briefing
+    command: site doctor --agent --deep --format json
+  - id: contracts
+    command: audit contracts --prefix / --verify-code --format json
+    depends_on: [agent-briefing]
+  - id: preview-index
+    command: preview status /index.html --format json
+    depends_on: [contracts]
+  - id: explain-index
+    command: preview explain /index --format json
+    depends_on: [preview-index]
+  - id: final-briefing
+    command: site doctor --agent --deep --format json
+    depends_on: [explain-index]
+
