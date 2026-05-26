@@ -1,0 +1,85 @@
+/* ============================================================
+   tabs block — axe-recruiting
+   ============================================================ */
+
+.tabs-wrapper {
+  overflow: hidden;
+}
+
+/* ── Tab list ───────────────────────────────────────────────── */
+.tabs .tabs-list {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tabs .tabs-list::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs .tabs-list button {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-family: var(--body-font-family), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin-bottom: -1px;
+  padding: 14px 24px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.tabs .tabs-list button:hover {
+  color: var(--color-text);
+}
+
+.tabs .tabs-list button[aria-selected="true"] {
+  border-bottom-color: var(--color-amber);
+  color: var(--color-amber);
+}
+
+/* ── Tab panels ─────────────────────────────────────────────── */
+.tabs-panels {
+  padding: 0;
+}
+
+.tabs-panel {
+  animation: tabs-fade-in 0.25s ease;
+}
+
+.tabs-panel[aria-hidden="true"] {
+  display: none;
+}
+
+@keyframes tabs-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Sections used as tab content panels ────────────────────── */
+.section[data-tab-id] {
+  display: none;
+  padding-top: 40px;
+}
+
+.section[data-tab-id].tab-active {
+  display: block;
+}
