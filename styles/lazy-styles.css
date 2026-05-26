@@ -1,1 +1,52 @@
-/* add global styles that can be loaded post LCP here */
+/* ============================================================
+   LAZY STYLES — loaded after first paint
+   ============================================================ */
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dim);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-amber-dim);
+  color: var(--color-heading);
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Keyboard */
+kbd {
+  font-family: var(--mono-font-family);
+  font-size: 0.8em;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: var(--color-text-muted);
+  box-shadow: 0 1px 0 var(--color-border);
+}
