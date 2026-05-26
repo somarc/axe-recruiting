@@ -135,12 +135,31 @@ h1, h2, h3, h4, h5, h6 {
   scroll-margin-top: calc(var(--nav-height) + 24px);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); font-weight: 700; }
-h2 { font-size: var(--heading-font-size-l); }
-h3 { font-size: var(--heading-font-size-s); font-weight: 600; }
-h4 { font-size: var(--heading-font-size-xs); }
-h5 { font-size: var(--heading-font-size-xs); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--heading-font-size-l);
+}
+
+h3 {
+  font-size: var(--heading-font-size-s);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--heading-font-size-xs);
+}
+
+h5 {
+  font-size: var(--heading-font-size-xs);
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs);
+}
 
 /* ============================================================
    BODY TEXT
@@ -323,7 +342,10 @@ main > .section > div > p:first-of-type {
   width: 24px;
 }
 
-.icon img { height: 100%; width: 100%; }
+.icon img {
+  height: 100%;
+  width: 100%;
+}
 
 /* ============================================================
    CODE
@@ -343,4 +365,28 @@ pre {
   font-size: var(--body-font-size-s);
   background: var(--color-surface);
   border-left: 3px solid var(--color-amber);
-  border-radius: var(-
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  overflow-x: auto;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 1.5em 0;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ============================================================
+   HR
+   ============================================================ */
+hr {
+  height: 1px;
+  border: none;
+  background: var(--color-border);
+  margin: 48px 0;
+}
