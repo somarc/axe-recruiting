@@ -1,7 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 
 /* ============================================================
-   FOOTER — dark, minimal, centered
+   FOOTER
    ============================================================ */
 
 footer {
@@ -10,24 +10,56 @@ footer {
   margin-top: 80px;
 }
 
-footer .footer-wrapper {
+footer.footer-wrapper {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 48px 24px 32px;
-  text-align: center;
+  padding: 40px 24px;
 }
 
 @media (width >= 900px) {
-  footer .footer-wrapper {
-    padding: 48px 48px 32px;
+  footer.footer-wrapper {
+    padding: 44px 48px;
   }
 }
 
-footer .columns {
+footer .footer {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  margin-bottom: 40px;
+  gap: 24px;
+}
+
+footer .footer > div {
+  display: grid;
+  gap: 20px;
+}
+
+footer .footer > div > div:first-child {
+  max-width: 420px;
+}
+
+footer h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  color: var(--color-heading);
+  font-family: var(--mono-font-family);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+footer h2::before {
+  content: '◆';
+  color: var(--color-amber);
+  font-size: 0.62em;
+}
+
+footer p {
+  margin: 0;
+  color: var(--color-text-dim);
+  font-size: 0.84rem;
+  line-height: 1.5;
 }
 
 footer p a {
@@ -40,29 +72,21 @@ footer p a:hover {
 
 /* Nav link list */
 footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 24px;
+  gap: 10px 20px;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 footer ul li a {
-  font-size: 0.875rem;
   color: var(--color-text-muted);
+  font-size: 0.86rem;
   text-decoration: none;
   transition: color 0.15s;
-}
-
-/* First item = brand label in mono amber */
-footer ul li:first-child a {
-  font-family: var(--mono-font-family);
-  font-weight: 500;
-  color: var(--color-amber);
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
 }
 
 footer ul li a:hover {
@@ -70,30 +94,13 @@ footer ul li a:hover {
   text-decoration: none;
 }
 
-/* Copyright / tagline */
-footer p {
-  font-size: 0.8rem;
-  color: var(--color-text-dim);
-  border-top: 1px solid var(--color-border-subtle);
-  padding-top: 24px;
-  margin: 0;
-  text-align: center;
-}
+@media (width >= 700px) {
+  footer .footer > div {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
 
-/* Brand mark with diamond */
-footer .footer-brand {
-  font-family: var(--mono-font-family);
-  font-size: 0.75rem;
-  color: var(--color-text-dim);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 24px;
-}
-
-footer .footer-brand::before {
-  content: '◆';
-  color: var(--color-amber);
-  font-size: 0.6em;
+  footer ul {
+    justify-content: flex-end;
+  }
 }
