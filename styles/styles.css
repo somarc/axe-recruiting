@@ -42,18 +42,28 @@
   --body-font-size-m: 16px;
   --body-font-size-s: 14px;
   --body-font-size-xs: 13px;
-  --heading-font-size-xxl: 52px;
-  --heading-font-size-xl: 40px;
-  --heading-font-size-l: 28px;
-  --heading-font-size-m: 22px;
-  --heading-font-size-s: 18px;
-  --heading-font-size-xs: 16px;
+  --heading-font-size-xxl: 48px;
+  --heading-font-size-xl: 36px;
+  --heading-font-size-l: 26px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 17px;
+  --heading-font-size-xs: 15px;
 
   /* Layout */
-  --nav-height: 60px;
+  --nav-height: 56px;
   --max-width: 1120px;
   --radius: 8px;
   --radius-lg: 12px;
+
+  /* Section rhythm */
+  --section-padding: 56px;
+}
+
+@media (width >= 600px) {
+  :root {
+    --section-padding: 72px;
+    --nav-height: 60px;
+  }
 }
 
 @media (width >= 900px) {
@@ -64,6 +74,7 @@
     --heading-font-size-m: 24px;
     --heading-font-size-s: 20px;
     --heading-font-size-xs: 16px;
+    --section-padding: 88px;
   }
 }
 
@@ -124,31 +135,12 @@ h1, h2, h3, h4, h5, h6 {
   scroll-margin-top: calc(var(--nav-height) + 24px);
 }
 
-h1 {
-  font-size: var(--heading-font-size-xxl);
-  font-weight: 700;
-}
-
-h2 {
-  font-size: var(--heading-font-size-l);
-}
-
-h3 {
-  font-size: var(--heading-font-size-s);
-  font-weight: 600;
-}
-
-h4 {
-  font-size: var(--heading-font-size-xs);
-}
-
-h5 {
-  font-size: var(--heading-font-size-xs);
-}
-
-h6 {
-  font-size: var(--heading-font-size-xs);
-}
+h1 { font-size: var(--heading-font-size-xxl); font-weight: 700; }
+h2 { font-size: var(--heading-font-size-l); }
+h3 { font-size: var(--heading-font-size-s); font-weight: 600; }
+h4 { font-size: var(--heading-font-size-xs); }
+h5 { font-size: var(--heading-font-size-xs); }
+h6 { font-size: var(--heading-font-size-xs); }
 
 /* ============================================================
    BODY TEXT
@@ -158,16 +150,13 @@ p {
   color: var(--color-text);
 }
 
-p:last-child {
-  margin-bottom: 0;
-}
+p:last-child { margin-bottom: 0; }
 
 p.lead {
-  font-size: 1.15em;
+  font-size: 1.1em;
   color: var(--color-text-muted);
   font-weight: 400;
   line-height: 1.65;
-  max-width: 720px;
 }
 
 ul, ol {
@@ -201,7 +190,7 @@ a:hover {
 p.button-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   margin: 0;
 }
 
@@ -210,16 +199,17 @@ button.button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 22px;
+  padding: 10px 20px;
   border-radius: 6px;
   font-family: var(--body-font-family);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s;
   border: 1px solid transparent;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 a.button.primary,
@@ -264,21 +254,27 @@ main img {
 }
 
 /* ============================================================
-   SECTIONS
+   SECTIONS  — tighter on mobile, opens up at desktop
    ============================================================ */
 main > .section {
   margin: 0;
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
 }
 
 main > .section > div {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
 main > .section:first-of-type {
   padding-top: 0;
+}
+
+@media (width >= 600px) {
+  main > .section > div {
+    padding: 0 32px;
+  }
 }
 
 @media (width >= 900px) {
@@ -305,17 +301,17 @@ main > .section > div > h2 {
 main > .section > div > h2::after {
   content: '';
   display: block;
-  width: 40px;
+  width: 32px;
   height: 2px;
   background: var(--color-amber);
-  margin-top: 12px;
-  margin-bottom: 32px;
+  margin-top: 10px;
+  margin-bottom: 24px;
   border-radius: 2px;
 }
 
 main > .section > div > p:first-of-type {
   color: var(--color-text-muted);
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 /* ============================================================
@@ -327,10 +323,7 @@ main > .section > div > p:first-of-type {
   width: 24px;
 }
 
-.icon img {
-  height: 100%;
-  width: 100%;
-}
+.icon img { height: 100%; width: 100%; }
 
 /* ============================================================
    CODE
@@ -350,21 +343,4 @@ pre {
   font-size: var(--body-font-size-s);
   background: var(--color-surface);
   border-left: 3px solid var(--color-amber);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  overflow-x: auto;
-  color: var(--color-text);
-  line-height: 1.6;
-  margin: 1.5em 0;
-}
-
-pre code {
-  background: none;
-  border: none;
-  padding: 0;
-  color: inherit;
-  font-size: inherit;
-}
-
-/* ============================================================
-   HR
+  border-radius: var(-
